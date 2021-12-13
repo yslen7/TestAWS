@@ -1,0 +1,24 @@
+name: Test
+on: 
+  pull_request:
+    types: [closed]
+    branches:
+      - yslen7-patch-1
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == 'true'
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
+        run: |
+          git config --global user.name 'yslen7'
+          git config --global user.email 'yslen7@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Automated report"
+          git push
+          
