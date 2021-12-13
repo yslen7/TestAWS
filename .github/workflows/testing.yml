@@ -1,13 +1,16 @@
 name: Test
-on: pull_request
+on: 
+  pull_request:
+    branches:
+      - yslen7-patch-1
 jobs:
   build:
     #if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}          
+          token: ${{secrets.PAT}}         
       - name: Check for modified files
         id: git-check
         run: echo ::set-output name=modified::$(if git diff-index --quiet HEAD --; then echo "false"; else echo "true"; fi)
