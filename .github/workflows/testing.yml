@@ -1,9 +1,5 @@
 name: Test
-on: 
-  pull_request:
-    branches:
-      - yslen7-patch-1
-    types: [closed]
+on: pull_request
 jobs:
   build:
     if: github.event.pull_request.merged == 'true'
