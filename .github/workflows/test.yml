@@ -3,7 +3,7 @@ on:
   pull_request:
     types: [closed]
     branches:
-      yslen7-patch-1
+      - yslen7-patch-1
 jobs:
   build:
     if: github.event.pull_request.merged == 'true'
