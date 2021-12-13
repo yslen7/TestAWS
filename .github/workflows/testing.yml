@@ -4,9 +4,9 @@ on:
     branches:
       - yslen7-patch-1
 jobs:
-  report:
-    runs-on: ubuntu-latest
+  build:
     if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
