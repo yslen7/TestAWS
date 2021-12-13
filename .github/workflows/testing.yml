@@ -8,8 +8,6 @@ jobs:
       - uses: actions/checkout@v1
         with:
           ref: ${{ github.head_ref }}
-      - name: Create report file
-        run: date +%s > report.txt
       - name: Commit report
         run: |
           git config --global user.name 'yslen7'
