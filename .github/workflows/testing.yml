@@ -10,7 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          branch: main
           token: ${{secrets.GITHUB_TOKEN}}       
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Push changes
@@ -18,6 +17,11 @@ jobs:
           git config --global user.name 'yslen7'
           git config --global user.email 'yslen7@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/yslen7/TestAWS.git
-          git commit -am "Automated changes"
-          git push origin ${{ github.ref }}:main
+      - uses: actions/checkout@v2
+        with:
+          branch: main
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Push main
+        run: |
+          git push --set-upstream origin main
           
