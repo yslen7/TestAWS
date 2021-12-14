@@ -1,0 +1,21 @@
+name: Testing main
+on: 
+  pull_request:
+    branches:
+      - yslen7-patch-1
+jobs:
+  build:
+    #if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}         
+      - name: Push changes
+        run: |
+          git config --global user.name 'yslen7'
+          git config --global user.email 'yslen7@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/yslen7/TestAWS.git
+          git commit -am "Automated changes"
+          git push origin main
+          
