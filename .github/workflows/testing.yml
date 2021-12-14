@@ -26,6 +26,5 @@ jobs:
         run: echo "${{ steps.branchlist.outputs.branchlist}} "
       - name: Push main
         run: |
-          git checkout main
           git push --set-upstream origin ${{ github.ref }}:main
           
