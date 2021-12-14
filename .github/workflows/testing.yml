@@ -29,7 +29,7 @@ jobs:
         run: echo "::set-output name=branch::$(git branch)"
       - name: Push main
         run: |
-          git pull main
-          git fetch 
+          git remote update
+          git fetch --all
           git push --set-upstream origin pull/${{ github.ref_name}}:main
           
