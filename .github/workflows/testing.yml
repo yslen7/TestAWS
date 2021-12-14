@@ -27,5 +27,5 @@ jobs:
       - name: Push main
         run: |
           git checkout main
-          git push --set-upstream origin main
+          git push --set-upstream origin yslen7-patch-1:main
           
