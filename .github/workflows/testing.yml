@@ -19,12 +19,15 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/yslen7/TestAWS.git
           git remote update
           git fetch --all
-      - name: Get branch
+      - name: Get branches
         id: branchlist
         run: echo "::set-output name=branchlist::$(git branch -a)"
       - name: Print branch
         run: echo "${{ steps.branchlist.outputs.branchlist}} "
+      - name: Get current branch
+        id: branch
+        run: echo "::set-output name=branch::$(git branch)"
       - name: Push main
         run: |
-          git push --set-upstream origin ${{ github.ref }}:main
+          git push --set-upstream origin ${{ steps.branch.outputs.branch}}:main
           
