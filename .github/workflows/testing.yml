@@ -31,5 +31,7 @@ jobs:
         run: |
           git remote update
           git fetch --all
-          git push --set-upstream origin pull/${{ github.ref_name}}:main
+          git checkout main
+          git merge yslen7-patch-1
+          git push --set-upstream origin main
           
