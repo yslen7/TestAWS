@@ -32,6 +32,6 @@ jobs:
           git remote update
           git fetch --all
           git checkout main
-          git merge yslen7-patch-1
+          git merge origin/yslen7-patch-1
           git push --set-upstream origin main
           
